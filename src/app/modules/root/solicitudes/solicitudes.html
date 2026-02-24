@@ -1,0 +1,157 @@
+<div class="row">
+    <div class="col-9">
+        <h3 class="page-title">
+            Solicitudes
+        </h3>
+    </div>
+    <div class="col-3 d-flex justify-content-end">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="javascript:;">Solicitudes</a></li>
+                <li class="breadcrumb-item " aria-current="page"></li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div id="main-content" class="row">
+    <div class="col-12 grid-margin stretch-card p-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="fa-pull-right">
+                    <button type="button" id="btn-add" class="btn btn-outline-primary btn-fw"
+                        (click)="throwAlert(content)">
+                        <i class="fa fa-plus-circle"></i>
+                        Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 grid-margin stretch-card p-2">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido materno</th>
+                                    <th>Fecha Solicitud</th>
+                                    <th>Usuario</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of rowsSolicitudes; track item.id) {
+                                <tr>
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.nombre_solicitante }}</td>
+                                    <td>{{ item.paterno_solicitante }}</td>
+                                    <td>{{ item.materno_solicitante }}</td>
+                                    <td>{{ item.fecha_solicitud }}</td>
+                                    <td>{{ item.user?.nombre }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-primary btn-fw"
+                                            (click)="edit(content, item)">
+                                            <i class="fa fa-edit"></i>
+                                        </button>&nbsp;
+                                        <button type="button" class="btn btn-outline-danger btn-fw"
+                                            (click)="onDestroy(item.id)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>&nbsp;
+                                        <button type="button" class="btn btn-outline-danger btn-fw"
+                                            (click)="cancelar(item.id)">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">{{solId ? 'Actualizar ' : 'Registrar '}}</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closed()"></button>
+
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="this.resourceForm">
+            <div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Nombre</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" id="nombre" placeholder=""
+                            formControlName="nombre_solicitante" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Apellido Paterno</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" placeholder="" formControlName="paterno_solicitante" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Apellido Materno</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <input type="text" class="form-control" placeholder="" formControlName="materno_solicitante" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Estatus</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <mat-checkbox formControlName="activo"></mat-checkbox>
+                    </div>
+
+                </div>
+            </div>
+            <!--div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Fecha Solicitud</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <input type="datetime-local" class="form-control" placeholder=""
+                            formControlName="fecha_solicitud" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-group row p-2">
+                <label class="col-md-5 col-form-label">Asignar usuario</label>
+                <div class="col-md-7">
+                    <div class="input-group mb-4">
+                        <select class="form-control" formControlName="user_id">
+                            <option value="">Seleccione un usuario</option>
+                            <option *ngFor="let user of users" [value]="user.id">{{ user.nombre }} {{ user.paterno }} {{
+                                user.materno }}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>-->
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="this.closed()">Cancelar</button>
+        <button type="button" class="btn btn-outline-primary" (click)="this.register()">Guardar</button>
+    </div>
+</ng-template>

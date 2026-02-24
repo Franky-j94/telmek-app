@@ -1,0 +1,67 @@
+<!--nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="fa fa-sign-out"></i>
+                    Logout
+                </a>
+            </li>
+        </div>
+    </div>
+
+</nav-->
+
+<nav class="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm navbar-expand-xs navbar-dark bg-primary px-3">
+  <button class="btn btn-outline-light d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+    ☰
+  </button> 
+  <ul class="navbar-nav ms-auto d-flex flex-row align-items-center gap-3">
+    
+    <!-- 🔔 Notificaciones -->
+    <li class="nav-item dropdown">
+      <a class="nav-link position-relative" href="#" role="button" data-bs-toggle="dropdown">
+        <i class="fas fa-bell text-white fx-2x"></i>
+        @if (this.notifications.length > 0) {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ notifications.length }}
+        </span>
+        }
+        
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li *ngIf="notifications.length === 0" class="dropdown-item text-muted">Sin notificaciones</li>
+        <li *ngFor="let notif of notifications">
+          <a class="dropdown-item" href="#">{{ notif }}</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- 👤 Usuario -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+        {{this.full_name}}
+      </a>
+      <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" routerLink="/perfil">Mi Perfil</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button class="dropdown-item" (click)="this.logOut()">Cerrar sesión</button></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<!--nav class="navbar navbar-dark bg-dark px-3">
+  <a class="navbar-brand" href="#">Admin App</a>
+
+  <div class="dropdown ms-auto">
+    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+      👤 Admin
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end">
+      <li><a class="dropdown-item" routerLink="/perfil">Mi perfil</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><button class="dropdown-item" >Cerrar sesión</button></li>
+    </ul>
+  </div>
+</nav-->

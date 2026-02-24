@@ -1,0 +1,40 @@
+<div class="offcanvas offcanvas-start d-md-flex flex-column flex-shrink-0 p-0 " tabindex="-1" id="offcanvasSidebar">
+  <div class="offcanvas-header d-sm-none bg-secondary">
+    <h5 class="offcanvas-title">Menú</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <hr class="d-sm-none">
+  <div class="navigation">
+    <ul>
+      <li class="item-nav0">
+        <div class="profile">
+          <h5 class="text-secondary"></h5>
+
+          <span class="title">Menu</span>
+        </div>
+
+
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a class="nav-link " routerLink="/dashboard" [routerLinkActive]="['active']">
+          <span class="icon"><i class="fa fa-circle"></i></span>
+          <span class="title">Dashboard</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a class="nav-link " routerLink="/configuracion-carga" [routerLinkActive]="['active']">
+          <span class="icon"><i class="fa fa-circle"></i></span>
+          <span class="title">Configuración de Carga</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="['active']">
+        <a class="nav-link " routerLink="/solicitudes" [routerLinkActive]="['active']">
+          <span class="icon"><i class="fa fa-circle"></i></span>
+          <span class="title">Solicitudes</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</div>

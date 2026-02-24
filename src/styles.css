@@ -1,0 +1,188 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "material-theme.scss";
+
+
+:root {
+    --blue: #1d5bbe;
+    --white: #fff;
+    --grey: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+/* ------------ navbar xs ------- */
+@media (min-width: 768px) {
+    .offcanvas-start {
+        position: relative !important;
+        transform: none !important;
+        visibility: visible !important;
+        border-right: 1px solid #ddd;
+    }
+
+    .offcanvas-backdrop {
+        display: none !important;
+    }
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+@media (min-width: 320px) {
+    .navbar-expand-xs .navbar-nav .dropdown-menu {
+        position: absolute;
+    }
+}
+
+/* ************************************** */
+
+hr {
+    margin: 0.25rem 0 !important;
+}
+
+.navigation {
+    /*position: fixed;
+    width: 300px;*/
+    height: 100vh;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.active {
+    background: var(--white);
+}
+
+@media screen and (min-width: 576px) {
+    .navigation ul li:nth-child(1) {
+        margin-bottom: 40px;
+        pointer-events: none;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 576px) {
+    .navigation ul {
+        margin-top: 80px;
+    }
+
+    .navigation ul .item-nav0 {
+        display: none;
+    }
+}
+
+.navigation ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.active a {
+    color: var(--blue);
+}
+
+.navigation {
+    ul li a {
+        .icon {
+            position: relative;
+            display: block;
+            min-width: 60px;
+            height: 60px;
+            line-height: 70px;
+            text-align: center;
+        }
+
+        i {
+            font-size: 1.75em;
+        }
+
+        .title {
+            position: relative;
+            display: block;
+            padding: 0 10px;
+            height: 60px;
+            line-height: 60px;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+
+        ul li:hover a::before,
+        ul li.active a::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -50px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border-radius: 25%;
+            box-shadow: 10px 35px 0 2px var(--white);
+            pointer-events: none;
+        }
+
+        ul li:hover a::after,
+        ul li.active a::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            bottom: -50px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border-radius: 25%;
+            box-shadow: 10px -15px 0 2px var(--white);
+            pointer-events: none;
+        }
+    }
+
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 250px;
+    padding-top: 1rem;
+    border-right: 1px solid #dee2e6;
+    z-index: 100;
+    /*background-color: #f8f9fa;*/
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        top: 56px;
+        left: 0;
+        width: 100%;
+        position: absolute;
+        z-index: 1030;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
